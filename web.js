@@ -1,7 +1,8 @@
 var express = require('express');
 var fs = require('fs');
 var pg = require('pg');
-var app = express.createServer(express.logger());
+var app = express();
+app.set('port', process.env.PORT || 3000);
 
 app.get('/', function(request, response) {
    //read the file
@@ -23,7 +24,8 @@ app.use(function(err, req, res, next){
         res.send('500 - Server Error');
 });
 
-app.set('port', process.env.PORT || 3000);
-app.listen(port, function() {
-  console.log("Listening on " + port);
+
+app.listen(app.get('port'), function(){
+  console.log( 'Express started on http://localhost:' +
+    app.get('port') + '; press Ctrl-C to terminate.' );
 });
