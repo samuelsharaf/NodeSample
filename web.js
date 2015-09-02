@@ -24,7 +24,6 @@ app.use(function(err, req, res, next){
 });
 
 app.set('port', process.env.PORT || 3000);
-app.listen(app.get('port'), function(){
-  console.log( 'Express started on http://localhost:' +
-    app.get('port'));
+app.listen(port, function() {
+  console.log("Listening on " + port);
 });
